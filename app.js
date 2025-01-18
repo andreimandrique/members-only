@@ -20,10 +20,14 @@ app.use(express.urlencoded({ extended: true }));
 const indexRouter = require("./routes/indexRouter");
 const signupRouter = require("./routes/signupRouter");
 const loginRouter = require("./routes/loginRouter");
+const logoutRouter = require("./routes/logoutRouter");
 
-app.use("/", indexRouter);
+const showInfo = require("./middlewares/showInfo");
+
+app.use("/", showInfo, indexRouter);
 app.use("/sign-up", signupRouter);
 app.use("/log-in", loginRouter);
+app.use("/log-out", logoutRouter);
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);

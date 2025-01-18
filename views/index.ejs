@@ -7,5 +7,9 @@
 </head>
 <body>
   <h1>Hello World</h1>
+  <% if (locals.currentUser) {%>
+    <h1>WELCOME BACK <%= currentUser.username %></h1>
+    <a href="/log-out">LOG OUT</a>
+  <% }  %>
 </body>
 </html>
