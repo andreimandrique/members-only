@@ -4,7 +4,7 @@ exports.loginGet = (req, res) => {
   res.render("login");
 };
 
-// exports.loginPost = passport.authenticate("local", {
-//   successRedirect: "/",
-//   failureRedirect: "/error",
-// });
+exports.loginPassport = passport.authenticate("local", {
+  successRedirect: "/",
+  failureRedirect: "/",
+});
