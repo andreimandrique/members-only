@@ -9,6 +9,12 @@ app.set("view engine", "ejs");
 const assetsPath = path.join(__dirname, "public");
 app.use(express.static(assetsPath));
 
+<<<<<<< HEAD
+=======
+app.use(session({ secret: "cats", resave: false, saveUninitialized: false }));
+app.use(passport.initialize());
+app.use(passport.session());
+>>>>>>> parent of f108eee (add login)
 app.use(express.urlencoded({ extended: true }));
 
 const indexRouter = require("./routes/indexRouter");
