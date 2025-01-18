@@ -13,7 +13,6 @@ const assetsPath = path.join(__dirname, "public");
 app.use(express.static(assetsPath));
 
 app.use(session({ secret: "cats", resave: false, saveUninitialized: false }));
-app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.urlencoded({ extended: true }));
 
@@ -27,8 +26,8 @@ app.use("/log-in", loginRouter);
 app.post(
   "/log-in",
   passport.authenticate("local", {
-    successRedirect: "/",
-    failureRedirect: "/",
+    successRedirect: "/success",
+    failureRedirect: "/failed",
   })
 );
 
