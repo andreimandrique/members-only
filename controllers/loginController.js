@@ -1,4 +1,4 @@
-const passport = require("../auth");
+const passport = require("./authController");
 
 exports.loginGet = (req, res) => {
   res.render("login");
