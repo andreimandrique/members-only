@@ -31,7 +31,7 @@ passport.serializeUser((user, done) => {
 passport.deserializeUser(async (user_id, done) => {
   try {
     const { rows } = await pool.query(
-      "SELECT * FROM users WHERE user_id = $1",
+      "SELECT * FROM users u JOIN  user_roles ur ON u.role_id = ur.role_id WHERE user_id = $1",
       [user_id]
     );
     const user = rows[0];

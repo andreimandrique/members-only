@@ -21,13 +21,17 @@ const indexRouter = require("./routes/indexRouter");
 const signupRouter = require("./routes/signupRouter");
 const loginRouter = require("./routes/loginRouter");
 const logoutRouter = require("./routes/logoutRouter");
+const adminRouter = require("./routes/adminRouter");
 
 const showInfo = require("./middlewares/showInfo");
+const isLoggedIn = require("./middlewares/isLoggedIn");
 
-app.use("/", showInfo, indexRouter);
+app.use(showInfo);
+app.use("/", indexRouter);
 app.use("/sign-up", signupRouter);
 app.use("/log-in", loginRouter);
 app.use("/log-out", logoutRouter);
+app.use("/admin", isLoggedIn, adminRouter);
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
