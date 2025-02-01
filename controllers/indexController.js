@@ -1,10 +1,11 @@
 exports.indexGet = (req, res) => {
-  if (req.user) {
-    if (req.user.role == "admin") {
-      console.log("admin");
-    } else if (req.user.role == "employee") {
-      console.log("employee");
+  if (req.isAuthenticated()) {
+    if (req.user.role === "admin") {
+      res.redirect("/admin");
+    } else if (req.user.role === "employee") {
+      res.redirect("/employee");
     }
+  } else {
+    res.redirect("/log-in");
   }
-  res.render("index");
 };
