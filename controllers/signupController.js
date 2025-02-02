@@ -1,15 +1,38 @@
 const db = require("../db/queries");
+const { body, validationResult } = require("express-validator");
 
 exports.signupGet = (req, res) => {
   res.render("signup");
 };
 
-exports.signupPost = async (req, res) => {
-  const { username, password, fullName } = req.body;
-  try {
-    await db.addUser(username, password, fullName);
-    res.redirect("/sign-up");
-  } catch (error) {
-    res.status(500).send("cannot add user");
-  }
-};
+const validateUser = [
+  body("username").notEmpty().withMessage("Username cannot be empty"),
+  body("password").notEmpty().withMessage("Password cannot be empty"),
+  body("fullName").notEmpty().withMessage("Fullname cannot be empty"),
+];
+
+exports.signupPost = [
+  validateUser,
+  async (req, res) => {
+    const errors = validationResult(req);
+
+    if (!errors.isEmpty()) {
+      console.log(errors);
+      res.status(400).render("signup", {
+        errors: errors.array(),
+      });
+    }
+
+    const { username, password, fullName } = req.body;
+    try {
+      await db.addUser(username, password, fullName);
+      res.render("signup", {
+        success: "Account successfull created",
+      });
+    } catch (error) {
+      res.status(500).render("signup", {
+        errors: [{ msg: "Username already exist" }],
+      });
+    }
+  },
+];

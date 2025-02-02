@@ -7,6 +7,19 @@
 </head>
 <body>
   <h1>Sign Up</h1>
+
+<% if (locals.errors) {%>
+  <ul>
+    <% errors.forEach(function(error) { %>
+      <li><%= error.msg %></li>
+    <% }); %>
+  </ul>
+<% } %>
+
+<% if (locals.success) {%>
+  <p><%= success %></p>
+<% } %>
+  
   <form action="" method="post">
     <label for="username">Username:</label>
     <input type="text" name="username" id="username">
@@ -16,5 +29,7 @@
     <input type="text" name="fullName" id="fullName">
     <button>Sign Up</button>
   </form>
+
+  <p>Have account? <a href="/log-in">Log In</a></p>
 </body>
 </html>
