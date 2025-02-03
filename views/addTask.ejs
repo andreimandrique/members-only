@@ -17,13 +17,15 @@
     <li><a href="/log-out">Log out</a></li>
   </ul>
   
-  <div>
+  <%- include('partials/successMsg.ejs', {success: locals.success}) %>
+
+  <%- include('partials/errorMsg.ejs', {errors: locals.errors}) %>
+
   <form action="" method="post">
     <label for="task"><b>Add Task</b></label> 
     <textarea name="task" id="task"></textarea>
     <button>Submit</button>
   </form>
-  </div>
-
+  
 </body>
 </html>
