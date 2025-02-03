@@ -40,6 +40,11 @@ app.use("/admin", isLoggedIn, isAdmin, adminRouter);
 app.use("/employee", isLoggedIn, isEmployee, employeeRouter);
 app.use("/addtask", isLoggedIn, addTaskRouter);
 
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).send("Something broke!");
+});
+
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
 });

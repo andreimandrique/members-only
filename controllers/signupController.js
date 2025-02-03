@@ -17,21 +17,18 @@ exports.signupPost = [
     const errors = validationResult(req);
 
     if (!errors.isEmpty()) {
-      res.render("signup", {
-        errors: errors.array(),
+      return res.render("signup", { errors: errors.array() });
+    }
+
+    const { username, password, fullName } = req.body;
+
+    try {
+      await db.addUser(username, password, fullName);
+      return res.render("signup", { success: "Account successfully created" });
+    } catch (error) {
+      return res.render("signup", {
+        errors: [{ msg: "Username already exists" }],
       });
-    } else {
-      const { username, password, fullName } = req.body;
-      try {
-        await db.addUser(username, password, fullName);
-        res.render("signup", {
-          success: "Account successfull created",
-        });
-      } catch (error) {
-        res.render("signup", {
-          errors: [{ msg: "Username already exist" }],
-        });
-      }
     }
   },
 ];

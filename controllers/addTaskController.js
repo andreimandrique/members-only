@@ -15,18 +15,17 @@ exports.addTaskPost = [
     const errors = validationResult(req);
 
     if (!errors.isEmpty()) {
-      res.render("addtask", { errors: errors.array() });
-    } else {
-      const userId = req.user.user_id;
-      const { task } = req.body;
-      try {
-        await db.addTask(userId, task);
-        res.render("addtask", {
-          success: "Task added successfully",
-        });
-      } catch (error) {
-        res.send(error);
-      }
+      return res.render("addtask", { errors: errors.array() });
+    }
+
+    const userId = req.user.user_id;
+    const { task } = req.body;
+
+    try {
+      await db.addTask(userId, task);
+      return res.render("addtask", { success: "Task added successfully" });
+    } catch (error) {
+      return res.status(500).send("An error occurred while adding the task.");
     }
   },
 ];
