@@ -10,8 +10,12 @@
   
   <h1>WELCOME BACK <%= currentUser.username %></h1>
   <p><b>Job Role:</b> <%= currentUser.role %></p>
-  <a href="/log-out">LOG OUT</a>
   
-  <a href="/employee/addtask/:<%= currentUser.user_id %>">Add Task</a>
+  <ul>
+    <li><a href="/">Dashboard</a></li>
+    <li><a href="/addtask">Add Task</a></li>
+    <li><a href="/log-out">Log out</a></li>
+  </ul>
+  
 </body>
 </html>
