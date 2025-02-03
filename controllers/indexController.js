@@ -1,3 +1,5 @@
+const passport = require("./authController");
+
 exports.indexGet = (req, res) => {
   if (req.isAuthenticated()) {
     if (req.user.role === "admin") {
@@ -6,6 +8,12 @@ exports.indexGet = (req, res) => {
       res.redirect("/employee");
     }
   } else {
-    res.redirect("/log-in");
+    res.render("index");
   }
 };
+
+exports.indexPost = passport.authenticate("local", {
+  successRedirect: "/",
+  failureRedirect: "/",
+  failureFlash: true,
+});

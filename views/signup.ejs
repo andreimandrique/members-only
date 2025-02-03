@@ -4,21 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css">
 </head>
 <body>
   <h1>Sign Up</h1>
 
-<% if (locals.errors) {%>
-  <ul>
-    <% errors.forEach(function(error) { %>
-      <li><%= error.msg %></li>
-    <% }); %>
-  </ul>
-<% } %>
+<%- include('partials/errorMsg.ejs', {errors: locals.errors}) %>
 
-<% if (locals.success) {%>
-  <p><%= success %></p>
-<% } %>
+<%- include('partials/successMsg.ejs', {success: locals.success}) %>
   
   <form action="" method="post">
     <label for="username">Username:</label>
@@ -27,7 +20,9 @@
     <input type="password" name="password" id="password">
     <label for="fullName">Fullname:</label>
     <input type="text" name="fullName" id="fullName">
-    <button>Sign Up</button>
+    <div>
+      <button>Sign Up</button>
+    </div>
   </form>
 
   <p>Have account? <a href="/log-in">Log In</a></p>

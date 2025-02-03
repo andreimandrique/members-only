@@ -21,22 +21,20 @@ app.use(express.urlencoded({ extended: true }));
 
 const indexRouter = require("./routes/indexRouter");
 const signupRouter = require("./routes/signupRouter");
-const loginRouter = require("./routes/loginRouter");
 const logoutRouter = require("./routes/logoutRouter");
 const adminRouter = require("./routes/adminRouter");
 const employeeRouter = require("./routes/employeeRouter");
 
-const showInfo = require("./middlewares/showInfo");
+const showCurrentUser = require("./middlewares/showCurrentUser");
 const isLoggedIn = require("./middlewares/isLoggedIn");
 const isAdmin = require("./middlewares/isAdmin");
 const isEmployee = require("./middlewares/isEmployee");
 
-app.use(showInfo);
 app.use("/", indexRouter);
 app.use("/sign-up", signupRouter);
-app.use("/log-in", loginRouter);
 app.use("/log-out", logoutRouter);
 
+app.use(showCurrentUser);
 app.use("/admin", isLoggedIn, isAdmin, adminRouter);
 app.use("/employee", isLoggedIn, isEmployee, employeeRouter);
 
