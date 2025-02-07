@@ -20,10 +20,19 @@ exports.signupPost = [
       return res.render("signup", { errors: errors.array() });
     }
 
-    const { username, password, fullName } = req.body;
+    const { username, password, fullName, isAdminRole } = req.body;
+
+    function checkRole(isAdminRole) {
+      if (isAdminRole == "on") {
+        return 1;
+      }
+      return 2;
+    }
+
+    const outputRole = checkRole(isAdminRole);
 
     try {
-      await db.addUser(username, password, fullName);
+      await db.addUser(username, password, fullName, outputRole);
       return res.render("signup", { success: "Account successfully created" });
     } catch (error) {
       return res.render("signup", {
