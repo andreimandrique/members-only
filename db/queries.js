@@ -21,7 +21,7 @@ async function viewAllTask() {
   return rows;
 }
 
-async function getTask(taskId) {
+async function viewTask(taskId) {
   const { rows } = await pool.query(
     "SELECT task_id, task,created_at ,full_name FROM tasks t JOIN users u ON t.owner_id = u.user_id WHERE task_id = $1;",
     [taskId]
@@ -29,9 +29,17 @@ async function getTask(taskId) {
   return rows;
 }
 
+async function updateTask(task_id, task) {
+  await pool.query("UPDATE tasks SET task = $2 WHERE task_id = $1;", [
+    task_id,
+    task,
+  ]);
+}
+
 module.exports = {
   addUser,
   addTask,
   viewAllTask,
-  getTask,
+  viewTask,
+  updateTask,
 };
