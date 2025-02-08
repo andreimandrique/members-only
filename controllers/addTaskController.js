@@ -2,7 +2,7 @@ const db = require("../db/queries");
 const { body, validationResult } = require("express-validator");
 
 exports.addTaskGet = (req, res) => {
-  res.render("addtask");
+  res.render("addTask");
 };
 
 const validateTask = [

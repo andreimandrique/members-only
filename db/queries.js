@@ -21,8 +21,17 @@ async function viewAllTask() {
   return rows;
 }
 
+async function getTask(taskId) {
+  const { rows } = await pool.query(
+    "SELECT task_id, task,created_at ,full_name FROM tasks t JOIN users u ON t.owner_id = u.user_id WHERE task_id = $1;",
+    [taskId]
+  );
+  return rows;
+}
+
 module.exports = {
   addUser,
   addTask,
   viewAllTask,
+  getTask,
 };

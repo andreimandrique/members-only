@@ -25,6 +25,7 @@ const logoutRouter = require("./routes/logoutRouter");
 const adminRouter = require("./routes/adminRouter");
 const employeeRouter = require("./routes/employeeRouter");
 const addTaskRouter = require("./routes/addTaskRouter");
+const editTaskRouter = require("./routes/editTaskRouter");
 
 const showCurrentUser = require("./middlewares/showCurrentUser");
 const isLoggedIn = require("./middlewares/isLoggedIn");
@@ -38,7 +39,8 @@ app.use("/log-out", logoutRouter);
 app.use(showCurrentUser);
 app.use("/admin", isLoggedIn, isAdmin, adminRouter);
 app.use("/employee", isLoggedIn, isEmployee, employeeRouter);
-app.use("/addtask", isLoggedIn, addTaskRouter);
+app.use("/add-task", isLoggedIn, addTaskRouter);
+app.use("/edit-task", isLoggedIn, editTaskRouter);
 
 app.use((err, req, res, next) => {
   console.error(err.stack);

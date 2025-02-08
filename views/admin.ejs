@@ -13,14 +13,28 @@
   
   <ul>
     <li><a href="/">Dashboard</a></li>
-    <li><a href="/addtask">Add Task</a></li>
+    <li><a href="/add-task">Add Task</a></li>
     <li><a href="/log-out">Log out</a></li>
   </ul>
 
-  <% tasks.forEach(function (task) { %>
-    <p><%= task.task %></p>
-    <p><%= task.created_at %></p>
-  <% }) %>
+  <table>
+    <tr>
+      <th>Task</th>
+      <th>Created By</th>
+      <th>Created At</th>
+      <th>Action</th>
+    </tr>
+    
+    <% tasks.forEach(function (task) { %>
+    <tr>
+      <td><%= task.task %></td>
+      <td><%= task.full_name %></td>
+      <td><%= task.created_at %></td>
+      <td><a href="/edit-task/<%= task.task_id %>">Edit</a></td>
+    </tr>
+    <% }) %>
+    
+  </table>
 
 </body>
 </html>
