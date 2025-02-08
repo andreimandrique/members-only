@@ -8,7 +8,7 @@
 </head>
 <body>
   
-  <h1>WELCOME BACK <%= currentUser.username %></h1>
+  <h1>WELCOME BACK <%= currentUser.full_name %></h1>
   <p><b>Job Role:</b> <%= currentUser.role %></p>
   
   <ul>
@@ -16,6 +16,21 @@
     <li><a href="/add-task">Add Task</a></li>
     <li><a href="/log-out">Log out</a></li>
   </ul>
+
+  <table>
+    <tr>
+      <th>Task</th>
+      <th>Created By</th>
+      <th>Created At</th>
+    </tr>
+
+    <% tasks.forEach(function (task) { %>
+    <tr>
+      <td><%= task.task %></td>
+      <td><%= task.full_name %></td>
+      <td><%= task.created_at %></td>
+    <% }) %>
+  </table>
   
 </body>
 </html>

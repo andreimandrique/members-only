@@ -1,5 +1,6 @@
-const { formatDate } = require("date-fns");
 const db = require("../db/queries");
+
+const { formatDate } = require("date-fns");
 const { param, body, validationResult } = require("express-validator");
 
 const validateTaskId = [param("taskId").notEmpty().isNumeric()];
@@ -7,13 +8,13 @@ const validateTaskId = [param("taskId").notEmpty().isNumeric()];
 exports.editTaskGet = [
   validateTaskId,
   async (req, res) => {
+    const { taskId } = req.params;
+
     const errors = validationResult(req);
 
     if (!errors.isEmpty()) {
       return res.status(400).send("invalid task id");
     }
-
-    const { taskId } = req.params;
 
     try {
       const task = await db.viewTask(taskId);
@@ -50,18 +51,14 @@ exports.editTaskPost = [
 
     try {
       await db.updateTask(taskId, task);
-      const tasks = await db.viewAllTask();
 
-      const tasksWithFormattedDate = tasks.map((task) => {
-        const formattedDate = formatDate(task.created_at, "p PP");
-        return { ...task, created_at: formattedDate };
-      });
-
-      return res.render("admin", {
-        tasks: tasksWithFormattedDate,
+      const myTask = await db.viewTask(taskId);
+      return res.render("editTask", {
+        task: myTask[0],
         success: "Task edit successful",
       });
     } catch (error) {
+      console.log(error);
       return res.status(500).send("cannot edit task");
     }
   },

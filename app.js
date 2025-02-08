@@ -26,6 +26,7 @@ const adminRouter = require("./routes/adminRouter");
 const employeeRouter = require("./routes/employeeRouter");
 const addTaskRouter = require("./routes/addTaskRouter");
 const editTaskRouter = require("./routes/editTaskRouter");
+const deleteTaskRouter = require("./routes/deleteTaskRouter");
 
 const showCurrentUser = require("./middlewares/showCurrentUser");
 const isLoggedIn = require("./middlewares/isLoggedIn");
@@ -41,6 +42,7 @@ app.use("/admin", isLoggedIn, isAdmin, adminRouter);
 app.use("/employee", isLoggedIn, isEmployee, employeeRouter);
 app.use("/add-task", isLoggedIn, addTaskRouter);
 app.use("/edit-task", isLoggedIn, editTaskRouter);
+app.use("/delete-task", isLoggedIn, deleteTaskRouter);
 
 app.use((err, req, res, next) => {
   console.error(err.stack);

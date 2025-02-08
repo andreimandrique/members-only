@@ -19,12 +19,14 @@
 
   <p><b>Created by:</b> <%= task.full_name %></p>
 
+  <%- include('partials/successMsg.ejs', {success: locals.success}) %>
+
   <%- include('partials/errorMsg.ejs', {errors: locals.errors}) %>
 
   <form action="" method="post">
     <label for="task"><b>Edit Task</b></label> 
     <textarea name="task" id="task"><%= task.task %></textarea>
-    <button>Edit</button>
+    <button>Update</button>
   </form>
   
 </body>

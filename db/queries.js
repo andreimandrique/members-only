@@ -29,11 +29,15 @@ async function viewTask(taskId) {
   return rows;
 }
 
-async function updateTask(task_id, task) {
+async function updateTask(taskId, task) {
   await pool.query("UPDATE tasks SET task = $2 WHERE task_id = $1;", [
-    task_id,
+    taskId,
     task,
   ]);
+}
+
+async function deleteTask(taskId) {
+  await pool.query("DELETE FROM tasks WHERE task_id = $1;", [taskId]);
 }
 
 module.exports = {
@@ -42,4 +46,5 @@ module.exports = {
   viewAllTask,
   viewTask,
   updateTask,
+  deleteTask,
 };
