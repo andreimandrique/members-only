@@ -22,17 +22,10 @@ exports.signupPost = [
 
     const { username, password, fullName, isAdminRole } = req.body;
 
-    function checkRole(isAdminRole) {
-      if (isAdminRole == "on") {
-        return 1;
-      }
-      return 2;
-    }
-
-    const outputRole = checkRole(isAdminRole);
+    const userRole = isAdminRole === "on" ? 1 : 2;
 
     try {
-      await db.addUser(username, password, fullName, outputRole);
+      await db.addUser(username, password, fullName, userRole);
       return res.render("signup", { success: "Account successfully created" });
     } catch (error) {
       return res.render("signup", {

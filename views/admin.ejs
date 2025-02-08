@@ -17,5 +17,10 @@
     <li><a href="/log-out">Log out</a></li>
   </ul>
 
+  <% tasks.forEach(function (task) { %>
+    <p><%= task.task %></p>
+    <p><%= task.created_at %></p>
+  <% }) %>
+
 </body>
 </html>
