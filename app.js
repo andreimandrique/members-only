@@ -38,11 +38,11 @@ app.use("/sign-up", signupRouter);
 app.use("/log-out", logoutRouter);
 
 app.use(showCurrentUser);
-app.use("/admin", isLoggedIn, isAdmin, adminRouter);
-app.use("/employee", isLoggedIn, isEmployee, employeeRouter);
 app.use("/add-task", isLoggedIn, addTaskRouter);
-app.use("/edit-task", isLoggedIn, editTaskRouter);
-app.use("/delete-task", isLoggedIn, deleteTaskRouter);
+app.use("/admin", isLoggedIn, isAdmin, adminRouter);
+app.use("/edit-task", isLoggedIn, isAdmin, editTaskRouter);
+app.use("/delete-task", isLoggedIn, isAdmin, deleteTaskRouter);
+app.use("/employee", isLoggedIn, isEmployee, employeeRouter);
 
 app.use((err, req, res, next) => {
   console.error(err.stack);
