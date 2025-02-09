@@ -13,6 +13,8 @@ In production
 ```
 npm run start
 ```
+## Setup
+This website use postgres database . You can find the sql file inside the db folder.
 ## Features
 ### Main Features
 * Log in 
