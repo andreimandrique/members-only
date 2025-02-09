@@ -6,10 +6,27 @@ const path = require("path");
 const session = require("express-session");
 const passport = require("passport");
 const flash = require("express-flash");
+const rateLimit = require("express-rate-limit");
 
-app.use(session({ secret: "cats", resave: false, saveUninitialized: false }));
+require("dotenv").config();
+
+app.use(
+  session({
+    secret: process.env.SESSIONSECRET,
+    resave: false,
+    saveUninitialized: false,
+  })
+);
 app.use(passport.session());
 app.use(flash());
+app.use(
+  rateLimit({
+    windowMs: 15 * 60 * 1000,
+    limit: 100,
+    standardHeaders: true,
+    legacyHeaders: false,
+  })
+);
 
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");

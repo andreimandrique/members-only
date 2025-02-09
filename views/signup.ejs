@@ -3,13 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css">
+  <title>Members Only</title>
+  <link rel="icon" type="image/x-icon" href="/favicon-32x32.png">
+  <link rel="stylesheet" href="/simple.min.css">
 </head>
 <body>
   <h1>Sign Up</h1>
-
-<%- include('partials/successMsg.ejs', {success: locals.success}) %>
 
 <%- include('partials/errorMsg.ejs', {errors: locals.errors}) %>
   
@@ -18,6 +17,8 @@
     <input type="text" name="username" id="username">
     <label for="password">Password:</label>
     <input type="password" name="password" id="password">
+    <label for="confirmPassword">Confirm Password:</label>
+    <input type="confirmPassword" name="confirmPassword" id="confirmPassword">
     <label for="fullName">Fullname:</label>
     <input type="text" name="fullName" id="fullName">
     <label for="isAdminRole">Is Admin ?</label>

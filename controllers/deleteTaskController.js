@@ -7,6 +7,6 @@ exports.deleteTaskPost = async (req, res) => {
     await db.deleteTask(taskId);
     res.redirect("/");
   } catch (error) {
-    return res.status(500).send("cannot delete task");
+    res.status(500).send("cannot delete task");
   }
 };

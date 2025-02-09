@@ -40,7 +40,7 @@ exports.editTaskPost = [
       await db.updateTask(taskId, task);
       res.redirect("/");
     } catch (error) {
-      return res.status(500).send("cannot edit task");
+      res.status(500).send("cannot edit task");
     }
   },
 ];
