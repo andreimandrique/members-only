@@ -26,6 +26,8 @@ In production
 ```
 npm run start
 ```
+### 5. Access the application
+Open your browser and navigate to https://localhost:3000
 ## Features
 ### Main Features
 * Log in 
