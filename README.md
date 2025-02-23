@@ -1,20 +1,22 @@
 # members-only
  A simple app that use passport js to login and logout . 
 ## Installation
-In root folder
+### 1. Clone the repository
+Get a copy of the repo
+### 2. Install dependencies
+In the root directory
 ```
 npm install
 ```
-In development
+### 3.Set up environment variables: 
+Create .env file in the root directory and add the following 
 ```
-npm run dev
+PGHOST=
+PGDATABASE = 
+PGUSER = 
+PGPASSWORD = 
+SESSIONSECRET = 
 ```
-In production
-```
-npm run start
-```
-## Setup
-This website use postgres database . You can find the sql file inside the db folder.
 ## Features
 ### Main Features
 * Log in 
