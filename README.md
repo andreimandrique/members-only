@@ -17,6 +17,15 @@ PGUSER =
 PGPASSWORD = 
 SESSIONSECRET = 
 ```
+### 4. Start the server
+In development
+```
+npm run dev
+```
+In production
+```
+npm run start
+```
 ## Features
 ### Main Features
 * Log in 
