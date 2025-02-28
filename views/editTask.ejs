@@ -5,20 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Members Only</title>
   <link rel="icon" type="image/x-icon" href="/favicon-32x32.png">
-  <link rel="stylesheet" href="/simple.min.css">
+  <link rel="stylesheet" href="/pico.min.css">
 </head>
 <body>
+  <main class="container">
+    <h1>WELCOME BACK <%= currentUser.username %></h1>
+    <p><b>Job Role:</b> <%= currentUser.role %></p>
 
-  <h1>WELCOME BACK <%= currentUser.username %></h1>
-  <p><b>Job Role:</b> <%= currentUser.role %></p>
+    <ul>
+      <li><a href="/">Dashboard</a></li>
+      <li><a href="/add-task">Add Task</a></li>
+      <li><a href="/log-out">Log out</a></li>
+    </ul>
 
-  <ul>
-    <li><a href="/">Dashboard</a></li>
-    <li><a href="/add-task">Add Task</a></li>
-    <li><a href="/log-out">Log out</a></li>
-  </ul>
-
-  <p><b>Created by:</b> <%= task.full_name %></p>
+    <p><b>Created by:</b> <%= task.full_name %></p>
 
   <%- include('partials/successMsg.ejs', {success: locals.success}) %>
 
@@ -29,6 +29,8 @@
     <textarea name="task" id="task"><%= task.task %></textarea>
     <button>Update</button>
   </form>
+  
+  </main>
   
 </body>
 </html>

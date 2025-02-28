@@ -5,25 +5,46 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Members Only</title>
   <link rel="icon" type="image/x-icon" href="/favicon-32x32.png">
-  <link rel="stylesheet" href="/simple.min.css">
+  <link rel="stylesheet" href="/pico.min.css">
 </head>
 <body>
-  <h1>Log In</h1>
+  <main class="container">
+    <h1>Members Only</h1>
 
-  <% if (messages.error) { %>
-  <p> <%= messages.error %> </p>
-  <% } %>
+    <% if (messages.error) { %>
+    <p style="color: red;"> <%= messages.error %> </p>
+    <% } %>
 
-  <form action="" method="post">
-    <label for="username">Username:</label>
-    <input type="text" name="username" id="username">
-    <label for="password">Password:</label>
-    <input type="password" name="password" id="password">
-    <div>
-      <button>Log In</button>
+    <div class="grid">
+
+      <div>
+        <h3>Log In</h3>
+        <form action="" method="post">
+        <label class="form-label" for="username">Username:</label>
+        <input class="form-control" type="text" name="username" id="username" autocomplete="off">
+        <label class="form-label" for="password">Password:</label>
+        <input class="form-control" type="password" name="password" id="password" autocomplete="off">
+        <button class="btn btn-outline-primary">Log In</button>
+        </form>
+        <p>Do not have account? <a href="/sign-up">Sign Up</a></p>
+      </div>
+
+      <div>
+        <h2>Demo Account</h2>
+        <h4>Admin</h4>
+        <ul>
+          <li><b>Username:</b> andrei</li>
+          <li><b>Password:</b> 123</li>
+        </ul>
+        <h4>Employee Account</h4>
+        <ul>
+          <li><b>Username:</b> john</li>
+          <li><b>Password:</b> 123</li>
+        </ul>
+      </div>
+      
     </div>
-  </form>
 
-  <p>Do not have account? <a href="/sign-up">Sign Up</a></p>
+  </main>
 </body>
 </html>

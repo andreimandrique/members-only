@@ -39,7 +39,7 @@ exports.signupPost = [
 
       try {
         await db.addUser(username, hashedPassword, fullName, userRole);
-        res.redirect("/");
+        res.render("signup", { success: "Account registered successfully" });
       } catch (error) {
         res.render("signup", {
           errors: [{ msg: "Username already exists" }],

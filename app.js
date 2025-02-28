@@ -63,6 +63,7 @@ app.use("/employee", isLoggedIn, isEmployee, employeeRouter);
 
 app.use((err, req, res, next) => {
   console.error(err.stack);
+  console.log(err);
   res.status(500).send("Something broke!");
 });
 

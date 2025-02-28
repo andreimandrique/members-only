@@ -1,16 +1,34 @@
 const db = require("../db/queries");
 
-const { body, validationResult } = require("express-validator");
+const { param, body, validationResult } = require("express-validator");
 
-exports.editTaskGet = async (req, res) => {
-  const { taskId } = req.params;
-  try {
-    const task = await db.viewTask(taskId);
-    return res.render("editTask", { task: task[0] });
-  } catch (error) {
-    return res.status(500).send("cannot get task");
-  }
-};
+const validateTaskId = [
+  param("taskId")
+    .trim()
+    .escape()
+    .isInt({ min: 1 })
+    .withMessage("Task Id must be a positive integer"),
+];
+
+exports.editTaskGet = [
+  validateTaskId,
+  async (req, res) => {
+    const { taskId } = req.params;
+
+    const errors = validationResult(req);
+
+    if (!errors.isEmpty()) {
+      return res.status(400).send("Invalid Task Id");
+    }
+
+    try {
+      const task = await db.viewTask(taskId);
+      res.render("editTask", { task: task[0] });
+    } catch (error) {
+      res.status(500).send("cannot get task");
+    }
+  },
+];
 
 const validateTask = [
   body("task").notEmpty().withMessage("Task cannot be empty"),

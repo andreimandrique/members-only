@@ -5,29 +5,37 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Members Only</title>
   <link rel="icon" type="image/x-icon" href="/favicon-32x32.png">
-  <link rel="stylesheet" href="/simple.min.css">
+  <link rel="stylesheet" href="/pico.min.css">
 </head>
 <body>
-  <h1>Sign Up</h1>
-
-<%- include('partials/errorMsg.ejs', {errors: locals.errors}) %>
+  <main class="container">
+    <h1>Members Only</h1>
   
-  <form action="" method="post">
-    <label for="username">Username:</label>
-    <input type="text" name="username" id="username">
-    <label for="password">Password:</label>
-    <input type="password" name="password" id="password">
-    <label for="confirmPassword">Confirm Password:</label>
-    <input type="confirmPassword" name="confirmPassword" id="confirmPassword">
-    <label for="fullName">Fullname:</label>
-    <input type="text" name="fullName" id="fullName">
-    <label for="isAdminRole">Is Admin ?</label>
-    <input type="checkbox" name="isAdminRole" id="isAdminRole">
-    <div>
-      <button>Sign Up</button>
-    </div>
-  </form>
+    <form action="" method="post">
+        <h3>Sign Up</h3>
 
-  <p>Have a account? <a href="/">Log In</a></p>
+        <%- include('partials/errorMsg.ejs', {errors: locals.errors}) %>
+
+        <%- include('partials/successMsg.ejs', {success: locals.success}) %>
+
+        <label for="username">Username:</label>
+        <input type="text" name="username" id="username">
+        <label for="password">Password:</label>
+        <input type="password" name="password" id="password">
+        <label for="confirmPassword">Confirm Password:</label>
+        <input type="confirmPassword" name="confirmPassword" id="confirmPassword">
+        <label for="fullName">Fullname:</label>
+        <input type="text" name="fullName" id="fullName">
+        <label for="isAdminRole">Is Admin ?    
+        <input type="checkbox" name="isAdminRole" id="isAdminRole">
+        </label>
+
+        <hr>
+        <button>Sign Up</button>
+        <hr>
+    </form>
+    <p>Have a account? <a href="/">Log In</a></p>
+  </main>
+  
 </body>
 </html>

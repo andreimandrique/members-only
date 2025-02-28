@@ -5,41 +5,41 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Members Only</title>
   <link rel="icon" type="image/x-icon" href="/favicon-32x32.png">
-  <link rel="stylesheet" href="/simple.min.css">
+  <link rel="stylesheet" href="/pico.min.css">
 </head>
 <body>
+  <main class="container">
+    <h1>WELCOME BACK <%= currentUser.full_name %></h1>
+    <p><b>Job Role:</b> <%= currentUser.role %></p>
   
-  <h1>WELCOME BACK <%= currentUser.full_name %></h1>
-  <p><b>Job Role:</b> <%= currentUser.role %></p>
-  
-  <ul>
-    <li><a href="/add-task">Add Task</a></li>
-    <li><a href="/log-out">Log out</a></li>
-  </ul>
+    <ul>
+      <li><a href="/add-task">Add Task</a></li>
+      <li><a href="/log-out">Log out</a></li>
+    </ul>
 
-  <table>
-    <tr>
-      <th>Task</th>
-      <th>Created By</th>
-      <th>Created At</th>
-      <th colspan="2">Action</th>
-    </tr>
-    
-    <% tasks.forEach(function (task) { %>
-    <tr>
-      <td><%= task.task %></td>
-      <td><%= task.full_name %></td>
-      <td><%= task.created_at %></td>
-      <td><a href="/edit-task/<%= task.task_id %>">Update</a></td>
-      <td>
-        <form action="/delete-task/<%= task.task_id %>" method="post">
-          <button>Delete</button>
-        </form>
-      </td>
-    </tr>
-    <% }) %>
-    
-  </table>
+    <table>
+      <tr>
+        <th>Task</th>
+        <th>Created By</th>
+        <th>Created At</th>
+        <th colspan="2">Action</th>
+      </tr>
+      
+      <% tasks.forEach(function (task) { %>
+      <tr>
+        <td><%= task.task %></td>
+        <td><%= task.full_name %></td>
+        <td><%= task.created_at %></td>
+        <td><a href="/edit-task/<%= task.task_id %>">Update</a></td>
+        <td>
+          <form action="/delete-task/<%= task.task_id %>" method="post">
+            <button>Delete</button>
+          </form>
+        </td>
+      </tr>
+      <% }) %>
+    </table>
 
+  </main>
 </body>
 </html>
