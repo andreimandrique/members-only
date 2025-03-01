@@ -19,14 +19,14 @@ app.use(
 );
 app.use(passport.session());
 app.use(flash());
-// app.use(
-//   rateLimit({
-//     windowMs: 15 * 60 * 1000,
-//     limit: 100,
-//     standardHeaders: true,
-//     legacyHeaders: false,
-//   })
-// );
+app.use(
+  rateLimit({
+    windowMs: 15 * 60 * 1000,
+    limit: 100,
+    standardHeaders: true,
+    legacyHeaders: false,
+  })
+);
 
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
