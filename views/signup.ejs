@@ -5,15 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Members Only</title>
   <link rel="icon" type="image/x-icon" href="/favicon-32x32.png">
-  <link rel="stylesheet" href="/pico.min.css">
+  <link rel="stylesheet" href="/simple.min.css">
 </head>
 <body>
   <main class="container">
     <h1>Members Only</h1>
   
     <form action="" method="post">
-        <h3>Sign Up</h3>
-
+      
         <%- include('partials/errorMsg.ejs', {errors: locals.errors}) %>
 
         <%- include('partials/successMsg.ejs', {success: locals.success}) %>
@@ -26,16 +25,13 @@
         <input type="confirmPassword" name="confirmPassword" id="confirmPassword">
         <label for="fullName">Fullname:</label>
         <input type="text" name="fullName" id="fullName">
-        <label for="isAdminRole">Is Admin ?    
-        <input type="checkbox" name="isAdminRole" id="isAdminRole">
-        </label>
-
-        <hr>
+        <p>
+          <label for="isAdminRole">Is Admin ?    
+          <input type="checkbox" name="isAdminRole" id="isAdminRole">
+          </label>
+        </p>
         <button>Sign Up</button>
-        <hr>
     </form>
     <p>Have a account? <a href="/">Log In</a></p>
-  </main>
-  
 </body>
 </html>

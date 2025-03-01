@@ -19,14 +19,14 @@ app.use(
 );
 app.use(passport.session());
 app.use(flash());
-app.use(
-  rateLimit({
-    windowMs: 15 * 60 * 1000,
-    limit: 100,
-    standardHeaders: true,
-    legacyHeaders: false,
-  })
-);
+// app.use(
+//   rateLimit({
+//     windowMs: 15 * 60 * 1000,
+//     limit: 100,
+//     standardHeaders: true,
+//     legacyHeaders: false,
+//   })
+// );
 
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
@@ -39,6 +39,8 @@ app.use(express.urlencoded({ extended: true }));
 const indexRouter = require("./routes/indexRouter");
 const signupRouter = require("./routes/signupRouter");
 const logoutRouter = require("./routes/logoutRouter");
+const demoRouter = require("./routes/demoRouter");
+
 const adminRouter = require("./routes/adminRouter");
 const employeeRouter = require("./routes/employeeRouter");
 const addTaskRouter = require("./routes/addTaskRouter");
@@ -53,8 +55,10 @@ const isEmployee = require("./middlewares/isEmployee");
 app.use("/", indexRouter);
 app.use("/sign-up", signupRouter);
 app.use("/log-out", logoutRouter);
+app.use("/demo", demoRouter);
 
 app.use(showCurrentUser);
+
 app.use("/add-task", isLoggedIn, addTaskRouter);
 app.use("/admin", isLoggedIn, isAdmin, adminRouter);
 app.use("/edit-task", isLoggedIn, isAdmin, editTaskRouter);
