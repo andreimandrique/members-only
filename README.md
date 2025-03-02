@@ -11,11 +11,8 @@ npm install
 ### 3.Set up environment variables: 
 Create .env file in the root directory and add the following 
 ```
-PGHOST=
-PGDATABASE = 
-PGUSER = 
-PGPASSWORD = 
-SESSIONSECRET = 
+DATABASE_URL = "<your database url>"
+SESSIONSECRET = "<your session secret>"
 ```
 ### 4. Start the server
 In development
