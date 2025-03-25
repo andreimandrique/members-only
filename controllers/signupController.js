@@ -36,17 +36,12 @@ exports.signupPost = [
 
     try {
       const hashedPassword = await bcrypt.hash(password, 10);
-
-      try {
-        await db.addUser(username, hashedPassword, fullName, userRole);
-        res.render("signup", { success: "Account registered successfully" });
-      } catch (error) {
-        res.render("signup", {
-          errors: [{ msg: "Username already exists" }],
-        });
-      }
+      await db.addUser(username, hashedPassword, fullName, userRole);
+      res.render("signup", { success: "Account registered successfully" });
     } catch (error) {
-      next(error);
+      res.render("signup", {
+        errors: [{ msg: "Username already exists" }],
+      });
     }
   },
 ];
