@@ -26,7 +26,7 @@ npm run start
 ### 5. Access the application
 Open your browser and navigate to http://localhost:3000
 ## Features
-### Main Features
+### Basic Features
 * Log in 
 * Sign up
 * Log out
