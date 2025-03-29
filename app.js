@@ -65,6 +65,10 @@ app.use("/edit-task", isLoggedIn, isAdmin, editTaskRouter);
 app.use("/delete-task", isLoggedIn, isAdmin, deleteTaskRouter);
 app.use("/employee", isLoggedIn, isEmployee, employeeRouter);
 
+app.get("*", (req, res) => {
+  res.status(404).send("Not found");
+});
+
 app.use((err, req, res, next) => {
   console.error(err.stack);
   console.log(err);
